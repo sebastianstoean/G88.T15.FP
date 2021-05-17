@@ -23,8 +23,15 @@ class AccessManager:
             return my_key.key
 
         def open_door( self, key ):
-            """Opens the door if the key is valid an it is not expired"""
-            return AccessKey.create_key_from_id(key).is_valid()
+            """Opens the door if the key is valid an it is not expired.
+            If the door is opened, a JSON storage file keeps the access log"""
+            open_key = AccessKey.create_key_from_id(key)
+            if open_key.is_valid():
+                open_key.store_access_log()
+                return True
+            return False
+
+            # return AccessKey.create_key_from_id(key).is_valid()
 
     __instance = None
 
