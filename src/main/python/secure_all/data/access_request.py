@@ -36,6 +36,9 @@ class AccessRequest:
         request_store.add_item(self)
         del request_store
 
+    def add_access_code(self, access_code):
+        self.__access_code = access_code
+
     @property
     def validity( self ):
         """Property representing the validity days"""
