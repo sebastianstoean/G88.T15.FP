@@ -25,6 +25,7 @@ class AccessRequest:
         #self.__time_stamp = datetime.timestamp(justnow)
         #only for testing , fix de time stamp to this value 1614962381.90867 , 5/3/2020 18_40
         self.__time_stamp = 1614962381.90867
+        self.__access_code = self.generate_access_code()
 
     def __str__(self):
         """It returns the json corresponding to the AccessRequest"""
@@ -36,8 +37,9 @@ class AccessRequest:
         request_store.add_item(self)
         del request_store
 
-    def add_access_code(self, access_code):
-        self.__access_code = access_code
+    def generate_access_code (self):
+        """Property for obtaining the access code according the requirements"""
+        return hashlib.md5(self.__str__().encode()).hexdigest()
 
     @property
     def validity( self ):
@@ -84,9 +86,8 @@ class AccessRequest:
         return self.__time_stamp
 
     @property
-    def access_code (self):
-        """Property for obtaining the access code according the requirements"""
-        return hashlib.md5(self.__str__().encode()).hexdigest()
+    def access_code(self):
+        return self.__access_code
 
     @classmethod
     def create_request_from_code( cls, access_code, dni ):
