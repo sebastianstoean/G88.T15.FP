@@ -10,6 +10,7 @@ from secure_all.data.attributes.attribute_email_list import EmailList
 from secure_all.data.attributes.attribute_key import Key
 
 from secure_all.storage.keys_json_store import KeysJsonStore
+from secure_all.storage.access_log_store import AccessLogStore
 from secure_all.parser.key_json_parser import KeyJsonParser
 
 
@@ -101,6 +102,13 @@ class AccessKey():
         """Storing the key in the keys store """
         keys_store = KeysJsonStore()
         keys_store.add_item(self)
+
+    def store_access_log(self):
+        """Storing the key and the timestamp in the access log"""
+        access_log = AccessLogStore()
+        dict_log = {access_log.ID_FIELD: self.__key,
+                access_log.ACCESS_TIME: self.__issued_at}
+        access_log.new_add_item(dict_log)
 
     def is_valid( self ):
         """Return true if the key is not expired"""
