@@ -90,15 +90,15 @@ class AccessRequest:
         return self.__access_code
 
     @classmethod
-    def create_request_from_code( cls, access_code, dni ):
+    def create_request_from_code( cls, access_code):
         """Load from the store an AccessRequest from the access_code
         and the dni"""
         request_store = RequestJsonStore()
-        request_stored = request_store.find_item(dni)
+        request_stored = request_store.find_item(access_code)
         if request_stored is None:
             raise AccessManagementException(request_store.NOT_FOUND_IN_THE_STORE)
 
-        request_stored_object = cls(request_stored[ request_store.ID_FIELD ],
+        request_stored_object = cls(request_stored[ request_store.DNI_FIELD ],
                                         request_stored[ request_store.REQUEST__NAME ],
                                         request_stored[ request_store.REQUEST__VISITOR_TYPE ],
                                         request_stored[ request_store.REQUEST__EMAIL_ADDRESS ],
