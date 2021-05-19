@@ -87,10 +87,11 @@ class AccessRequest:
 
     @property
     def access_code(self):
+        """Property representing an access code"""
         return self.__access_code
 
     @classmethod
-    def create_request_from_code( cls, access_code):
+    def create_request_from_code( cls, access_code, dni):
         """Load from the store an AccessRequest from the access_code
         and the dni"""
         request_store = RequestJsonStore()
