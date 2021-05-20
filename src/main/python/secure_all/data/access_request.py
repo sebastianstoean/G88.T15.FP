@@ -97,7 +97,7 @@ class AccessRequest:
         request_store = RequestJsonStore()
         request_stored = request_store.find_item(access_code)
         if request_stored is None:
-            raise AccessManagementException(request_store.NOT_FOUND_IN_THE_STORE)
+            raise AccessManagementException(request_store.NOT_CORRECT_FOR_THIS_DNI)
 
         request_stored_object = cls(request_stored[ request_store.DNI_FIELD ],
                                         request_stored[ request_store.REQUEST__NAME ],
@@ -106,5 +106,5 @@ class AccessRequest:
                                         request_stored[ request_store.ACCESS_REQUEST__VALIDITY ])
 
         if not request_stored_object.access_code == access_code:
-            raise AccessManagementException(request_store.NOT_CORRECT_FOR_THIS_DNI)
+            raise AccessManagementException(request_store.NOT_FOUND_IN_THE_STORE)
         return request_stored_object

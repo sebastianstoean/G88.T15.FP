@@ -31,7 +31,14 @@ class AccessManager:
                 return True
             return False
 
-            # return AccessKey.create_key_from_id(key).is_valid()
+        def revoke_key(self, revokefile):
+            """Revokes the access for a key if its valid"""
+            key = AccessKey.create_key_for_revoke(revokefile)
+            if key.is_valid():
+                return str(key.notification_emails)
+            return False
+
+        # return AccessKey.create_key_from_id(key).is_valid()
 
     __instance = None
 

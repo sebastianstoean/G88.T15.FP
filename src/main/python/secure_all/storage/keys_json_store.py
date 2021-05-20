@@ -12,6 +12,7 @@ class KeysJsonStore():
         ACCESS_CODE = "_AccessKey__access_code"
         DNI = "_AccessKey__dni"
         MAIL_LIST = "_AccessKey__notification_emails"
+        REVOCATION = "_AccessKey__revoked"
         INVALID_ITEM = "Invalid item to be stored as a key"
         KEY_ALREADY_STORED = "key already found in storeRequest"
 
@@ -30,6 +31,22 @@ class KeysJsonStore():
                 raise AccessManagementException(self.KEY_ALREADY_STORED)
 
             return super().add_item(item)
+
+        def add_revoke(self, item):
+            self.load_store()
+            self._data_list.append(item)
+            self.save_store()
+
+        def change_revoke(self, item):
+            self.load_store()
+            stored_item = self.find_item(item[self.ID_FIELD])
+            if not stored_item:
+                raise AccessManagementException("key not found in json")
+            self.delete_item(stored_item)
+            stored_item[self.REVOCATION] = True
+            self.add_revoke(stored_item)
+            self.save_store()
+
 
     __instance = None
 
