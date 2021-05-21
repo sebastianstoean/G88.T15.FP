@@ -11,10 +11,10 @@ class AccessLogStore():
         ID_FIELD = "_AccessLog__key"
         ACCESS_TIME = "_AccessLog__timestamp"
 
-        _FILE_PATH = JSON_FILES_PATH + "storage_log.json"
+        _FILE_PATH = JSON_FILES_PATH + "storeLog.json"
         _ID_FIELD = ID_FIELD
 
-        def new_add_item(self, item):
+        def add_item(self, item):
             """Inserts an item to the access log json file"""
             self.load_store()
             self._data_list.append(item)

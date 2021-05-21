@@ -2,7 +2,7 @@
 
 import unittest
 
-from secure_all import AccessManager, KeysJsonStore, RequestJsonStore
+from secure_all import AccessManager, KeysJsonStore, RequestJsonStore, AccessLogStore
 from secure_all.data.attributes.attribute_dni import Dni
 
 
@@ -35,6 +35,14 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(keys_json_store_1, keys_json_store_2)
         self.assertEqual(keys_json_store_2, keys_json_store_3)
         self.assertEqual(keys_json_store_3, keys_json_store_1)
+
+        log_json_store_1 = AccessLogStore()
+        log_json_store_2 = AccessLogStore()
+        log_json_store_3 = AccessLogStore()
+
+        self.assertEqual(log_json_store_1, log_json_store_2)
+        self.assertEqual(log_json_store_2, log_json_store_3)
+        self.assertEqual(log_json_store_3, log_json_store_1)
 
         # probamos ahora que dos clases sin singleton devuelven
         # instancias distintas. Por ejemplo con DNI

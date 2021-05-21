@@ -14,34 +14,55 @@ INVALID;RF4 12;rk_no_field1.json;JSON Decode Error - Wrong JSON Format
 INVALID;RF4 13;rk_double_field1.json;JSON Decode Error - Wrong JSON Format
 INVALID;RF4 14;rk_no_separator.json;JSON Decode Error - Wrong JSON Format
 INVALID;RF4 15;rk_double_separator.json;JSON Decode Error - Wrong JSON Format
-INVALID;RF4 16;rk_mod_final_bracket.json;JSON Decode Error - Wrong JSON Format
-INVALID;RF4 17;rk_no_label1.json;JSON Decode Error - Wrong JSON Format
-INVALID;RF4 18;rk_double_label1.json;JSON Decode Error - Wrong JSON Format
-INVALID;RF4 19;rk_no_equal.json;JSON Decode Error - Wrong JSON Format
-INVALID;RF4 20;rk_double_equal.json;JSON Decode Error - Wrong JSON Format
-INVALID;RF4 21;rk_no_value1.json;JSON Decode Error - Wrong JSON Format
-INVALID;RF4 22;rk_double_value1.json;JSON Decode Error - Wrong JSON Format
-INVALID;RF4 23;rk_mod_separator.json;JSON Decode Error - Wrong JSON Format
-INVALID;RF4 24;rk_no_quotation.json;JSON Decode Error - Wrong JSON Format
-INVALID;RF4 25;rk_double_quotation.json;JSON Decode Error - Wrong JSON Format
-INVALID;RF4 26;rk_no_val_label1.json;JSON Decode Error - Wrong label
-INVALID;RF4 27;rk_double_val_label1.json;JSON Decode Error - Wrong label
-INVALID;RF4 28;rk_mod_equal.json;JSON Decode Error - Wrong JSON Format
-INVALID;RF4 29;rk_no_val_value1.json;key invalid
-INVALID;RF4 30;rk_double_val_value1.json;key invalid
-INVALID;RF4 31;rk_no_val_label2.json;JSON Decode Error - Wrong label
-INVALID;RF4 32;rk_double_val_label2.json;JSON Decode Error - Wrong label
-INVALID;RF4 33;rk_no_val_value2.json;revocation invalid
-INVALID;RF4 34;rk_double_val_value2.json;revocation invalid
-INVALID;RF4 35;rk_no_val_label3.json;JSON Decode Error - Wrong label
-INVALID;RF4 36;rk_double_val_label3.json;JSON Decode Error - Wrong label
-INVALID;RF4 37;rk_no_val_value3.json;reason invalid
-INVALID;RF4 38;rk_mod_quotation.json;JSON Decode Error - Wrong JSON Format
-INVALID;RF4 39;rk_mod_val_label1.json;JSON Decode Error - Wrong label
-INVALID;RF4 40;rk_mod_val_value1.json;key invalid
-INVALID;RF4 41;rk_mod_val_label2.json;JSON Decode Error - Wrong label
-INVALID;RF4 42;rk_mod_val_value2.json;revocation invalid
-INVALID;RF4 43;rk_mod_val_label3.json;JSON Decode Error - Wrong label
+INVALID;RF4 16;rk_no_field2.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 17;rk_double_field2.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 18;rk_no_field3.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 19;rk_double_field3.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 20;rk_mod_final_bracket.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 21;rk_no_label1.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 22;rk_double_label1.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 23;rk_no_equal.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 24;rk_double_equal.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 25;rk_no_value1.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 26;rk_double_value1.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 27;rk_mod_separator.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 28;rk_no_label2.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 29;rk_double_label2.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 30;rk_no_value2.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 31;rk_double_value2.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 32;rk_no_label3.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 33;rk_double_label3.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 34;rk_no_value3.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 35;rk_double_value3.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 36;rk_no_quotation1.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 37;rk_double_quotation1.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 38;rk_no_val_label1.json;JSON Decode Error - Wrong label
+INVALID;RF4 39;rk_double_val_label1.json;JSON Decode Error - Wrong label
+INVALID;RF4 40;rk_no_quotation2.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 41;rk_double_quotation2.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 42;rk_mod_equal.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 43;rk_no_quotation3.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 44;rk_double_quotation3.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 45;rk_no_val_value1.json;key invalid
+INVALID;RF4 46;rk_double_val_value1.json;key invalid
+INVALID;RF4 47;rk_no_quotation4.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 48;rk_double_quotation4.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 49;rk_no_val_label2.json;JSON Decode Error - Wrong label
+INVALID;RF4 50;rk_double_val_label2.json;JSON Decode Error - Wrong label
+INVALID;RF4 51;rk_no_val_value2.json;revocation invalid
+INVALID;RF4 52;rk_double_val_value2.json;revocation invalid
+INVALID;RF4 53;rk_no_val_label3.json;JSON Decode Error - Wrong label
+INVALID;RF4 54;rk_double_val_label3.json;JSON Decode Error - Wrong label
+INVALID;RF4 55;rk_no_val_value3.json;reason invalid
+INVALID;RF4 56;rk_mod_quotation1.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 57;rk_mod_val_label1.json;JSON Decode Error - Wrong label
+INVALID;RF4 58;rk_mod_quotation2.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 59;rk_mod_quotation3.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 60;rk_mod_val_value1.json;key invalid
+INVALID;RF4 61;rk_mod_quotation4.json;JSON Decode Error - Wrong JSON Format
+INVALID;RF4 62;rk_mod_val_label2.json;JSON Decode Error - Wrong label
+INVALID;RF4 63;rk_mod_val_value2.json;revocation invalid
+INVALID;RF4 64;rk_mod_val_label3.json;JSON Decode Error - Wrong label
 VALID; RF4 bv1;rk_bv_lower_valid.json;['mail1@uc3m.es', 'mail2@uc3m.es']
 VALID; RF4 bv2;rk_bv_upper_valid2.json;['mail1@uc3m.es', 'mail2@uc3m.es']
 VALID; RF4 bv3;rk_bv_upper_valid3.json;['mail1@uc3m.es', 'mail2@uc3m.es']
