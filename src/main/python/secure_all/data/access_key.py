@@ -124,7 +124,7 @@ class AccessKey():
         access_log = AccessLogStore()
         dict_log = {access_log.ID_FIELD: self.__key,
                     access_log.ACCESS_TIME: self.__issued_at}
-        access_log.new_add_item(dict_log)
+        access_log.add_item(dict_log)
 
     def is_valid(self):
         """Return true if the key is not expired"""
