@@ -63,7 +63,9 @@ INVALID;RF4 61;rk_mod_quotation4.json;JSON Decode Error - Wrong JSON Format
 INVALID;RF4 62;rk_mod_val_label2.json;JSON Decode Error - Wrong label
 INVALID;RF4 63;rk_mod_val_value2.json;revocation invalid
 INVALID;RF4 64;rk_mod_val_label3.json;JSON Decode Error - Wrong label
-VALID; RF4 bv2;rk_bv_lower_valid.json;['mail1@uc3m.es', 'mail2@uc3m.es']
-VALID; RF4 bv3;rk_bv_upper_valid2.json;['mail1@uc3m.es', 'mail2@uc3m.es']
-VALID; RF4 bv4;rk_bv_upper_valid3.json;['mail1@uc3m.es', 'mail2@uc3m.es']
-INVALID; RF4 bv5;rk_bv_upper_invalid.json;reason invalid
+VALID;RF4 bv2;rk_bv_lower_valid.json;['mail1@uc3m.es', 'mail2@uc3m.es']
+VALID;RF4 bv3;rk_bv_upper_valid2.json;['mail1@uc3m.es', 'mail2@uc3m.es']
+VALID;RF4 bv4;rk_bv_upper_valid3.json;['mail1@uc3m.es', 'mail2@uc3m.es']
+INVALID;RF4 bv5;rk_bv_upper_invalid.json;reason invalid
+INVALID;RF4 st1;rk_st_key_not_found.json;key is not found or is expired
+INVALID;RF4 st2;rk_ok1.json;key revoked

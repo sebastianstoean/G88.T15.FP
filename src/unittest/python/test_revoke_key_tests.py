@@ -3,7 +3,7 @@
 import unittest
 import csv
 from secure_all import AccessManager, AccessManagementException, \
-    JSON_FILES_PATH, KeysJsonStore
+    JSON_FILES_PATH, KeysJsonStore, AccessKey, RequestJsonStore
 
 
 class MyTestCase(unittest.TestCase):
