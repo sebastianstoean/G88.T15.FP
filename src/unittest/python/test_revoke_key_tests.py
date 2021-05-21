@@ -1,3 +1,5 @@
+"""Test for revoke_key method"""
+
 import unittest
 import csv
 from secure_all import AccessManager, AccessManagementException, \
@@ -16,16 +18,18 @@ class MyTestCase(unittest.TestCase):
         key_store.empty_store()
         my_manager = AccessManager()
 
+        # store in the json two access keys using valid jsons and the function get_access_key
         my_manager.get_access_key(JSON_FILES_PATH + r"\key_ok.json")
         my_manager.get_access_key(JSON_FILES_PATH + r"\key_ok2.json")
-
+        # during testing, one of the previous will be deleted from the store, as it will be
+        # used to test Revocation == "Final"
 
     def test_parametrized_cases_tests(self):
-        """Parametrized cases read from testingCases_RF1.csv"""
+        """Parametrized cases read from testingCases_RF4.csv"""
         my_cases = JSON_FILES_PATH + "testingCases_RF4.csv"
-        with open(my_cases, newline='', encoding='utf-8') as csvfile:
+        with open(my_cases, newline='', encoding='utf-8') as csv_file:
             # pylint: disable=no-member
-            param_test_cases = csv.DictReader(csvfile, delimiter=';')
+            param_test_cases = csv.DictReader(csv_file, delimiter=';')
             my_code = AccessManager()
             keys_store = KeysJsonStore()
             for row in param_test_cases:

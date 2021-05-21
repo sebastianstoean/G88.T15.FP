@@ -2,10 +2,12 @@
 from secure_all.storage.json_store import JsonStore
 from secure_all.cfg.access_manager_config import JSON_FILES_PATH
 
+
 class AccessLogStore():
     """Extends JsonStore """
+
     class __AccessLogStore(JsonStore):
-        #pylint: disable=invalid-name
+        # pylint: disable=invalid-name
         ID_FIELD = "_AccessLog__key"
         ACCESS_TIME = "_AccessLog__timestamp"
 
@@ -20,13 +22,13 @@ class AccessLogStore():
 
     __instance = None
 
-    def __new__( cls ):
+    def __new__(cls):
         if not AccessLogStore.__instance:
             AccessLogStore.__instance = AccessLogStore.__AccessLogStore()
         return AccessLogStore.__instance
 
-    def __getattr__ ( self, nombre ):
+    def __getattr__(self, nombre):
         return getattr(self.__instance, nombre)
 
-    def __setattr__ ( self, nombre, valor ):
+    def __setattr__(self, nombre, valor):
         return setattr(self.__instance, nombre, valor)

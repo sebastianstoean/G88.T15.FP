@@ -4,7 +4,8 @@ from secure_all.exception.access_management_exception import AccessManagementExc
 
 
 class JsonStore():
-    """Managest stores based on JsonFiles"""
+    """Manages stores based on JsonFiles"""
+
     _FILE_PATH = ""
     _ID_FIELD = ""
 
@@ -18,6 +19,7 @@ class JsonStore():
         self.save_store()
 
     def delete_item(self, item):
+        """remove an item from the store"""
         self.load_store()
         self._data_list.remove(item)
         self.save_store()

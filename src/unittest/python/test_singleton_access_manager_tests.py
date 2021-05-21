@@ -8,7 +8,8 @@ from secure_all.data.attributes.attribute_dni import Dni
 
 class MyTestCase(unittest.TestCase):
     """Test case for the singletons"""
-    def test_singleton_access_manager( self ):
+
+    def test_singleton_access_manager(self):
         """Instance the three singletons and test they're equal
             Instance objects from non singleton class and test they're differet"""
         access_manager_1 = AccessManager()
@@ -35,13 +36,14 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(keys_json_store_2, keys_json_store_3)
         self.assertEqual(keys_json_store_3, keys_json_store_1)
 
-        #probamos ahora que dos clases sin singleton devuelven
-        #instancias distintas. Por ejemplo con DNI
+        # probamos ahora que dos clases sin singleton devuelven
+        # instancias distintas. Por ejemplo con DNI
 
         dni_1 = Dni("12345678Z")
         dni_2 = Dni("12345678Z")
 
         self.assertNotEqual(dni_1, dni_2)
+
 
 if __name__ == '__main__':
     unittest.main()

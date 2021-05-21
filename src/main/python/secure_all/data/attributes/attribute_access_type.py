@@ -3,13 +3,12 @@ from secure_all.exception.access_management_exception import AccessManagementExc
 from secure_all.data.attributes.attribute import Attribute
 
 MIN_DAYS_GUEST = 2
-
 RESIDENT_DAYS = 0
 
 
 class AccessType(Attribute):
     """Class that includes the validation rules for access_type
-    including the logic for validatin the days"""
+    including the logic for validation the days"""
 
     ACCESS_TYPE_GUEST = "Guest"
     ACCESS_TYPE_RESIDENT = "Resident"

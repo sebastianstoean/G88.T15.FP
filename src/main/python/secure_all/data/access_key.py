@@ -1,4 +1,5 @@
 """Contains the class Access Key"""
+
 from datetime import datetime
 import hashlib
 
@@ -29,7 +30,7 @@ class AccessKey():
         self.__type = self.TYPE_DS
         self.__access_code = AccessCode(access_code).value
         self.__dni = Dni(dni).value
-        access_request = AccessRequest.create_request_from_code(self.__access_code, self.__dni)
+        access_request = AccessRequest.create_request_from_code(self.__access_code)
         self.__notification_emails = EmailList(notification_emails).value
         validity = access_request.validity
         # justnow = datetime.utcnow()
@@ -39,10 +40,12 @@ class AccessKey():
         if validity == 0:
             self.__expiration_date = 0
         else:
-            # timestamp is represneted in seconds.microseconds
-            # validity must be expressed in senconds to be added to the timestap
+            # timestamp is represented in seconds.microseconds
+            # validity must be expressed in seconds to be added to the timestamp
             self.__expiration_date = self.__issued_at + (validity * 30 * 24 * 60 * 60)
         self.__key = hashlib.sha256(self.__signature_string().encode()).hexdigest()
+        # the AccessKey will have an attribute called revoked, which will indicate whether
+        # it has been revoked or not using a boolean value
         self.__revoked = False
 
     def __signature_string(self):
@@ -130,8 +133,10 @@ class AccessKey():
         if not (self.__expiration_date == 0 or
                 self.__expiration_date > justnow_timestamp):
             raise AccessManagementException("key is not found or is expired")
+
+        # this method will also check if the key has been revoked and raise an exception if it was
         if self.__revoked:
-            raise AccessManagementException("key already reboked")
+            raise AccessManagementException("key is revoked")
         return True
 
     @classmethod
@@ -156,24 +161,31 @@ class AccessKey():
                    key_object[keys_store.MAIL_LIST])
 
     @classmethod
-    def create_key_for_revoke(cls, accessfile):
+    def create_key_for_revoke(cls, access_file):
         """Class method for creating an instance of AccessKey
         from the content of a file according to RF4"""
-        revoke_items = RevokeJsonParser(accessfile).json_content
-        rev_key = Key(revoke_items[RevokeJsonParser.KEY])
-        rev_revocation = Revocation(revoke_items[RevokeJsonParser.REVOCATION])
-        rev_reason = Reason(revoke_items[RevokeJsonParser.REASON])
+        # read the file
+        revoke_items = RevokeJsonParser(access_file).json_content
+        # check that the introduced data is correct using attributes
+        rev_key = Key(revoke_items[RevokeJsonParser.KEY]).value
+        rev_revocation = Revocation(revoke_items[RevokeJsonParser.REVOCATION]).value
+        rev_reason = Reason(revoke_items[RevokeJsonParser.REASON]).value
 
+        # create a KeysJsonStore object in order to use its functions
         keys_store = KeysJsonStore()
-        key_object = keys_store.find_item(rev_key.value)
+        # find the key in the storage, if not found raise an exception
+        key_object = keys_store.find_item(rev_key)
+        if key_object is None:
+            raise AccessManagementException("key is not found or is expired")
 
-        if rev_revocation.value.lower() == "final":
+        # if the revocation is final, we will remove the key from the storeKeys
+        if rev_revocation.lower() == "final":
             keys_store.delete_item(key_object)
+        # if the revocation is temporal, we will change its revoked attribute
         else:
-            if key_object is None:
-                raise AccessManagementException("key is not found or is expired")
             keys_store.change_revoke(key_object)
 
+        # finally, return the class object
         return cls(key_object[keys_store.DNI],
                    key_object[keys_store.ACCESS_CODE],
                    key_object[keys_store.MAIL_LIST])
