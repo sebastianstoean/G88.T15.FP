@@ -170,12 +170,7 @@ class AccessKey():
         # create a KeysJsonStore object in order to use its functions
         keys_store = KeysJsonStore()
         # find the key in the storage, if not found raise an exception
-        key_object = keys_store.find_item(rev_key)
-        print(key_object)
-        if key_object is None:
-            raise AccessManagementException("key is not found or is expired")
-        elif key_object[keys_store.REVOCATION]:
-            raise AccessManagementException("key already revoked")
+        key_object = keys_store.revocation_find_item(rev_key)
 
         # if the revocation is final, we will remove the key from the storeKeys
         if rev_revocation.lower() == "final":

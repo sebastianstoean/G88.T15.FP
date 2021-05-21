@@ -39,12 +39,22 @@ class KeysJsonStore():
             self._data_list.append(item)
             self.save_store()
 
+        def revocation_find_item(self, in_item):
+            """finds an item in the store and checks if it is revoked"""
+            self.load_store()
+            key = self.find_item(in_item)
+
+            if key is None:
+                raise AccessManagementException("key is not found or is expired")
+            elif key[self.REVOCATION]:
+                raise AccessManagementException("key already revoked")
+
+            return key
+
         def change_revoke(self, item):
             """Change the revoked attribute of the input item inside the storage"""
             self.load_store()
-            stored_item = self.find_item(item[self.ID_FIELD])
-            if not stored_item:
-                raise AccessManagementException("key not found in json")
+            stored_item = self.revocation_find_item(item[self.ID_FIELD])
             self.delete_item(stored_item)
             stored_item[self.REVOCATION] = True
             self.add_revoke(stored_item)
