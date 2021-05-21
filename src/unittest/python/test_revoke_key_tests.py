@@ -21,6 +21,10 @@ class MyTestCase(unittest.TestCase):
         # store in the json two access keys using valid jsons and the function get_access_key
         my_manager.get_access_key(JSON_FILES_PATH + r"\key_ok.json")
         my_manager.get_access_key(JSON_FILES_PATH + r"\key_ok2.json")
+        my_manager.get_access_key(JSON_FILES_PATH + r"\key_ok3.json")
+        my_manager.get_access_key(JSON_FILES_PATH + r"\key_ok4.json")
+        my_manager.get_access_key(JSON_FILES_PATH + r"\key_ok5.json")
+        my_manager.get_access_key(JSON_FILES_PATH + r"\key_ok6.json")
         # during testing, one of the previous will be deleted from the store, as it will be
         # used to test Revocation == "Final"
 
