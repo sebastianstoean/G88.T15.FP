@@ -133,10 +133,6 @@ class AccessKey():
         if not (self.__expiration_date == 0 or
                 self.__expiration_date > justnow_timestamp):
             raise AccessManagementException("key is not found or is expired")
-
-        # this method will also check if the key has been revoked and raise an exception if it was
-        if self.__revoked:
-            raise AccessManagementException("key is revoked")
         return True
 
     @classmethod
@@ -175,8 +171,11 @@ class AccessKey():
         keys_store = KeysJsonStore()
         # find the key in the storage, if not found raise an exception
         key_object = keys_store.find_item(rev_key)
+        print(key_object)
         if key_object is None:
             raise AccessManagementException("key is not found or is expired")
+        elif key_object[keys_store.REVOCATION]:
+            raise AccessManagementException("key already revoked")
 
         # if the revocation is final, we will remove the key from the storeKeys
         if rev_revocation.lower() == "final":
