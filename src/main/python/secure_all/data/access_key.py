@@ -172,6 +172,12 @@ class AccessKey():
         # find the key in the storage, if not found raise an exception
         key_object = keys_store.revocation_find_item(rev_key)
 
+        key = cls(key_object[keys_store.DNI],
+                  key_object[keys_store.ACCESS_CODE],
+                  key_object[keys_store.MAIL_LIST])
+
+        key.is_valid()
+
         # if the revocation is final, we will remove the key from the storeKeys
         if rev_revocation.lower() == "final":
             keys_store.delete_item(key_object)
@@ -180,6 +186,4 @@ class AccessKey():
             keys_store.change_revoke(key_object)
 
         # finally, return the class object
-        return cls(key_object[keys_store.DNI],
-                   key_object[keys_store.ACCESS_CODE],
-                   key_object[keys_store.MAIL_LIST])
+        return key

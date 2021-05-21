@@ -15,18 +15,44 @@ class MyTestCase(unittest.TestCase):
     def setUpClass(cls):
         """ inicializo el entorno de prueba """
         key_store = KeysJsonStore()
-        key_store.empty_store()
-        my_manager = AccessManager()
+        requests_store = RequestJsonStore()
+        keys_store = KeysJsonStore()
+        requests_store.empty_store()
+        keys_store.empty_store()
 
-        # store in the json two access keys using valid jsons and the function get_access_key
-        my_manager.get_access_key(JSON_FILES_PATH + r"\key_ok.json")
-        my_manager.get_access_key(JSON_FILES_PATH + r"\key_ok2.json")
-        my_manager.get_access_key(JSON_FILES_PATH + r"\key_ok3.json")
-        my_manager.get_access_key(JSON_FILES_PATH + r"\key_ok4.json")
-        my_manager.get_access_key(JSON_FILES_PATH + r"\key_ok5.json")
-        my_manager.get_access_key(JSON_FILES_PATH + r"\key_ok6.json")
+        my_manager = AccessManager()
+        # store in the json the access keys needed for the tests to execute
+        # for this, we have created a total of 6 new keys and stored them in the json
+        my_manager.request_access_code("05270358T", "Pedro Martin",
+                                       "Resident", "uc3m@gmail.com", 0)
+
+        my_manager.request_access_code("53935158C", "Marta Lopez",
+                                       "Guest", "uc3m@gmail.com", 5)
+
+        my_manager.request_access_code("87654123L", "Maria Montero",
+                                       "Guest", "maria@uc3m.es", 15)
+
+        my_manager.request_access_code("49717014F", "Marta Benito",
+                                       "Guest", "marta@uc3m.es", 15)
+
+        my_manager.request_access_code("07049955H", "Sebastian Stoean",
+                                       "Guest", "sebas@uc3m.es", 15)
+
+        my_manager.get_access_key(JSON_FILES_PATH + r"\rk_key_ok.json")
+        my_manager.get_access_key(JSON_FILES_PATH + r"\rk_key_ok2.json")
+        my_manager.get_access_key(JSON_FILES_PATH + r"\rk_key_ok3.json")
+        my_manager.get_access_key(JSON_FILES_PATH + r"\rk_key_ok4.json")
+        my_manager.get_access_key(JSON_FILES_PATH + r"\rk_key_ok5.json")
         # during testing, one of the previous will be deleted from the store, as it will be
-        # used to test Revocation == "Final"
+        # used to test Revocation == "Final" and 3 more will be changed to revoke == True
+
+        my_manager.request_access_code("68026939T", "Juan Perez",
+                                       "Guest", "expired@gmail.com", 2)
+        my_key_expirated = AccessKey.create_key_from_file(JSON_FILES_PATH +
+                                                          "key_ok_testing_expired.json")
+        # We manipulate the expiration date to obtain an expired AccessKey
+        my_key_expirated.expiration_date = 0
+        my_key_expirated.store_keys()
 
     def test_parametrized_cases_tests(self):
         """Parametrized cases read from testingCases_RF4.csv"""

@@ -40,7 +40,6 @@ class AccessManager:
             """Revokes the access for a key if its valid"""
             # create a key using the input file
             key = AccessKey.create_key_for_revoke(revoke_file)
-            # return the notification mails
             return str(key.notification_emails)
 
     __instance = None

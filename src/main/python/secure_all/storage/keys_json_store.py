@@ -15,6 +15,7 @@ class KeysJsonStore():
         MAIL_LIST = "_AccessKey__notification_emails"
         REVOCATION = "_AccessKey__revoked"
         INVALID_ITEM = "Invalid item to be stored as a key"
+        EXP_DATE = "_AccessKey__expiration_date"
         KEY_ALREADY_STORED = "key already found in storeRequest"
 
         _FILE_PATH = JSON_FILES_PATH + "storeKeys.json"
@@ -45,7 +46,7 @@ class KeysJsonStore():
             key = self.find_item(in_item)
 
             if key is None:
-                raise AccessManagementException("key is not found or is expired")
+                raise AccessManagementException("key is not found")
             elif key[self.REVOCATION]:
                 raise AccessManagementException("key already revoked")
 
