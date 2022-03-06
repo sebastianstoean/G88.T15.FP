@@ -1,9 +1,17 @@
-# Final practice
+# Final practice - Software Development
 
-T15.G88.FP
+#### Proyect for learning:
+·Proyect structures<br>
+·Parser programming <br>
+·Storage systems using json <br>
+·Basic encryption using hash <br>
+·User accounts<br>
+·Regex programming<br><br>
 
-Authors:
 
-Sebastian Ionut Stoean, 100429139@alumnos.uc3m.es,  sebastianuc3m
+**Authors:** <br>
+**Sebastian Ionut Stoean <br>
+Marta Benito Serrano**
 
-Marta Benito Serrano, 100429066@alumnos.uc3m.es, marta7bs
+**In collaboration with:**<br>
+Universidad Carlos III de Madrid
