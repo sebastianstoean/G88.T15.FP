@@ -1,12 +1,13 @@
 # Final practice - Software Development
 
 #### Proyect for learning:
-·Proyect structures<br>
+·Proyect structures <br>
+·Proyect unit-tests <br>
 ·Parser programming <br>
 ·Storage systems using json <br>
 ·Basic encryption using hash <br>
-·User accounts<br>
-·Regex programming<br><br>
+·User accounts <br>
+·Regex programming <br><br>
 
 
 **Authors:** <br>
